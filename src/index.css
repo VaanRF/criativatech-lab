@@ -1,3 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Michroma&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Criativa Tech Lab — Identidade Visual */
+:root {
+  --cor-fundo: #0A1F44;
+  --cor-fundo-escuro: #061530;
+  --cor-destaque: #00B4D8;
+  --cor-acao: #00D97E;
+  --cor-texto: #FFFFFF;
+  --cor-texto-secundario: #D1D5DB;
+
+  --fonte-titulo: 'Michroma', sans-serif;
+  --fonte-corpo: 'Poppins', sans-serif;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -5,7 +20,14 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #f5f5f5;
-  color: #1a1a2e;
+  font-family: var(--fonte-corpo);
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--fonte-titulo);
+  font-weight: 400;
+  letter-spacing: 1px;
 }

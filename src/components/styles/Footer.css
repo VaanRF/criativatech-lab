@@ -1,6 +1,101 @@
-.footer-bruxo {
-  margin-top: 0.5rem;
-  font-size: 0.9rem;
-  color: #e94560;
+.footer {
+  background-color: var(--cor-fundo-escuro);
+  border-top: 1px solid rgba(0, 180, 216, 0.2);
+  padding-top: 60px;
+  margin-top: 80px; /* Dá um respiro do conteúdo acima */
+}
+
+.footer-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+/* --- Coluna 1: Logo e Descrição --- */
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer-logo {
+  height: 80px; /* Tamanho pequeno e discreto */
+  margin-bottom: 20px;
+  filter: drop-shadow(0px 0px 10px rgba(0, 180, 216, 0.2)); /* Leve brilho */
+}
+
+.footer-descricao {
+  color: var(--cor-texto-secundario);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  max-width: 300px;
+}
+
+/* --- Colunas 2 e 3: Links --- */
+.footer-titulo {
+  font-family: var(--fonte-titulo);
+  color: var(--cor-texto);
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+.footer-links, .footer-social {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-links a, .footer-social a {
+  color: var(--cor-texto-secundario);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover, .footer-social a:hover {
+  color: var(--cor-destaque); /* Fica ciano ao passar o mouse */
+}
+
+/* --- Parte de baixo (Copyright) --- */
+.footer-bottom {
+  background-color: rgba(0, 0, 0, 0.2); /* Fundo levemente mais escuro */
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-bottom p {
+  color: var(--cor-texto-secundario);
+  font-size: 0.85rem;
+  margin-bottom: 5px;
+}
+
+.footer-bottom p:last-child {
+  margin-bottom: 0;
+  color: var(--cor-destaque);
   font-weight: 500;
+}
+
+/* =========================================
+   AJUSTES PARA CELULAR
+   ========================================= */
+@media (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: 1fr; /* Tudo em uma coluna só */
+    text-align: center;
+    gap: 30px;
+  }
+
+  .footer-brand {
+    align-items: center; /* Centraliza a logo no celular */
+  }
+
+  .footer-descricao {
+    max-width: 100%;
+  }
 }

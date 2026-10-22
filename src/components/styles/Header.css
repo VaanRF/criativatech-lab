@@ -2,55 +2,64 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 4rem;
-  background: #1a1a2e;
-  color: white;
-  border-bottom: 3px solid #e94560;
+  /* O SEGREDO AQUI: 20px em cima/baixo e 60px nas laterais */
+  padding: 20px 60px; 
+  background: var(--cor-fundo-escuro);
+  border-bottom: 1px solid rgba(0, 180, 216, 0.2);
 }
 
-.logo-link {
-  text-decoration: none;
-}
-
-.logo h1 {
-  font-size: 1.8rem;
-  margin: 0;
-  color: #fff;
-  font-weight: 700;
-  letter-spacing: 1px;
-  transition: color 0.3s;
-}
-
-.logo h1:hover {
-  color: #e94560;
-}
-
-.nav {
+.header-logo {
   display: flex;
-  gap: 2rem;
-}
-
-.nav a {
-  color: #fff;
+  align-items: center;
   text-decoration: none;
+}
+
+.header-logo img {
+  height: 160px; 
+  width: auto;
+  /* Ajustei o truque do espaço vazio para não colar no topo */
+  margin-top: -30px; 
+  margin-bottom: -30px; 
+  transition: transform 0.2s;
+}
+
+.header-logo img:hover {
+  transform: scale(1.05);
+}
+
+.header-nav {
+  display: flex;
+  gap: 35px; /* Aumentei o espaço entre as palavras do menu */
+}
+
+.header-nav a {
+  color: var(--cor-texto-secundario);
+  text-decoration: none;
+  font-weight: 500;
   font-size: 1.1rem;
-  transition: color 0.3s;
+  transition: color 0.2s;
 }
 
-.nav a:hover {
-  color: #e94560;
+.header-nav a:hover {
+  color: var(--cor-destaque);
 }
 
+/* Ajuste para não quebrar no celular */
 @media (max-width: 768px) {
   .header {
-    flex-direction: column;
-    padding: 1rem;
-    gap: 1rem;
+    flex-direction: column; 
+    padding: 15px;
+    gap: 10px;
   }
-
-  .nav {
-    gap: 1rem;
+  
+  /* AQUI ESTÁ A MÁGICA */
+  .header-logo {
+    display: none; /* Esconde a logo do Header no celular */
+  }
+  
+  .header-nav {
     flex-wrap: wrap;
     justify-content: center;
+    gap: 20px;
   }
 }

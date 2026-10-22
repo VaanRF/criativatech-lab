@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './styles/Index.css';
+import Header from '../../components/Header';
 
 const codigosBase = [
   {
@@ -39,7 +40,9 @@ const codigosBase = [
 ];
 
 export default function ProgramacaoIndex() {
+  
   return (
+  <div> <Header />   
     <div className="programacao-container">
       <header className="programacao-header">
         <h1>💻 Programação com Arduino</h1>
@@ -61,6 +64,7 @@ export default function ProgramacaoIndex() {
           </Link>
         ))}
       </div>
+    </div>
     </div>
   );
 }

@@ -1,0 +1,28 @@
+@import '../../intro/styles/Aula.css'; /* Importa o CSS base da aula para não repetir tudo */
+
+/* 
+Se o seu import acima der erro, copie e cole o conteúdo inteiro do Aula.css aqui 
+e apenas adicione as regras abaixo.
+*/
+
+.aula-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+/* Força a responsividade dos cards no celular */
+@media (max-width: 768px) {
+  .aula-container {
+    padding: 40px 15px;
+  }
+  
+  .materiais-grid {
+    grid-template-columns: 1fr; /* Uma coluna só no celular */
+  }
+
+  .material-item {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}

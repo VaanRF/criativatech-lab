@@ -1,75 +1,112 @@
-.modulos {
-  padding: 4rem 4rem;
-  background: #f5f5f5;
+.modulos-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 80px 20px;
 }
 
-.section-title {
+.modulos-header {
   text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 3rem;
-  color: #1a1a2e;
+  margin-bottom: 50px;
 }
 
+.modulos-titulo {
+  font-family: var(--fonte-titulo);
+  font-size: 2.2rem;
+  color: var(--cor-texto);
+  margin-bottom: 15px;
+}
+
+/* Detalhe em ciano embaixo do título */
+.modulos-titulo::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--cor-destaque);
+  margin: 15px auto 0;
+  border-radius: 2px;
+}
+
+.modulos-subtitulo {
+  color: var(--cor-texto-secundario);
+  font-size: 1.1rem;
+}
+
+/* =========================================
+   GRID E CARDS
+   ========================================= */
 .modulos-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
 }
 
 .modulo-card {
-  background: white;
-  border-radius: 15px;
-  padding: 2rem;
-  text-align: center;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-  transition: transform 0.3s, box-shadow 0.3s;
+  background: rgba(6, 21, 48, 0.6); /* Fundo azul translúcido */
+  border: 1px solid rgba(0, 180, 216, 0.1); /* Borda quase invisível */
+  border-radius: 16px;
+  padding: 30px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
+/* Efeito ao passar o mouse */
 .modulo-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+  transform: translateY(-8px);
+  border-color: var(--cor-destaque); /* A borda acende em ciano */
+  box-shadow: 0 10px 30px rgba(0, 180, 216, 0.15); /* Sombra brilhante */
 }
 
 .modulo-emoji {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 20px;
 }
 
-.modulo-card h3 {
-  color: #1a1a2e;
-  margin-bottom: 0.5rem;
+.modulo-card-titulo {
+  font-family: var(--fonte-titulo);
+  font-size: 1.2rem;
+  color: var(--cor-destaque);
+  margin-bottom: 10px;
+  line-height: 1.3;
 }
 
-.modulo-card p {
-  color: #666;
+.modulo-card-descricao {
+  color: var(--cor-texto-secundario);
   font-size: 0.95rem;
-  margin-bottom: 1rem;
+  line-height: 1.5;
+  flex-grow: 1; /* Empurra o footer para baixo */
+  margin-bottom: 20px;
+}
+
+/* Rodapé do card (Aulas e Setinha) */
+.modulo-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 15px;
+  margin-top: auto;
 }
 
 .modulo-aulas {
-  display: inline-block;
-  background: #e94560;
-  color: white;
-  padding: 0.3rem 1rem;
-  border-radius: 20px;
   font-size: 0.85rem;
-  margin-bottom: 1rem;
+  color: var(--cor-texto-secundario);
+  font-weight: 500;
 }
 
-.btn-acessar {
-  background: transparent;
-  color: #e94560;
-  border: 2px solid #e94560;
-  padding: 0.5rem 1.5rem;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: all 0.3s;
+.modulo-seta {
+  color: var(--cor-acao); /* Verde */
+  font-size: 1.2rem;
   font-weight: bold;
+  transition: transform 0.3s ease;
 }
 
-.btn-acessar:hover {
-  background: #e94560;
-  color: white;
+/* A setinha se move pro lado no hover */
+.modulo-card:hover .modulo-seta {
+  transform: translateX(5px);
 }

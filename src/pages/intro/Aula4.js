@@ -1,322 +1,138 @@
 import React from 'react';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
-import './styles/Aula4.css';
-import circuitoImg from '../../assets/imagens/aula4-botao.png';
-import LinkML from '../../components/LinkML';
-
-function Aula4() {
+import { Link } from 'react-router-dom';
+import './styles/Aula.css'; 
+import Desafio from '../../components/Desafio'; 
+import BlocoCodigo from '../../components/BlocoCodigo'; // Importando o componente de bloco de código
+// Se tiver imagem, importe aqui:
+import circuitImg4 from '../../assets/imagens/aula4-circuit.png';
+import MaterialCard from '../../components/MaterialCard'; // Importando o componente de cartão de material
+export default function Aula4() {
   return (
-    <div className="aula-page">
-      <Header />
-      
-      <main className="aula-container">
-        <div className="aula-header">
-          <div className="aula-breadcrumb">
-            <a href="/">Início</a> &gt; <a href="/modulos">Módulo 1</a> &gt; <span>Aula 4</span>
-          </div>
-          <h1>🔘 Acendendo LED com Botão</h1>
-          <div className="aula-meta">
-            <span className="aula-modulo">Módulo 1: Introdução à Robótica</span>
-            <span className="aula-duracao">⏱️ 40 minutos</span>
-            <span className="aula-nivel">🌱 Iniciante / Intermediário</span>
-          </div>
+    <div className="aula-container">
+      {/* Cabeçalho da Aula */}
+      <header className="aula-header">
+        <div className="aula-tag">Módulo 1 • Aula 4</div>
+        <h1 className="aula-titulo">Semáforo com Botão (Pedestre)</h1>
+        <p className="aula-descricao">
+          O semáforo agora vai interagir com o mundo! Vamos adicionar um botão para que o pedestre possa pedir passagem. O sinal fica verde até alguém apertar o botão.
+        </p>
+      </header>
+
+      {/* Seção de Materiais */}
+      <section className="aula-secao secao-materiais">
+        <h2>🧩 Materiais Necessários</h2>
+        <div className="materiais-grid">
+          
+          {/* Só chamamos o componente! */}
+          <MaterialCard produtoId="arduinoUno" />
+          <MaterialCard produtoId="led" />
+          <MaterialCard produtoId="resistor" />
+          <MaterialCard produtoId="protoboard" />
+          <MaterialCard produtoId="jumpers" />
+          <MaterialCard produtoId="pushButton" />
         </div>
+      </section>
 
-        <div className="aula-content">
-          {/* Kit Básico - Link Afiliado */}
-          <LinkML />
+      {/* Seção de Teoria */}
+      <section className="aula-secao">
+        <h2>Como funciona?</h2>
+        <p>
+          O grande segredo desta aula é o <strong>INPUT_PULLUP</strong>. 
+          Quando configuramos um pino como `INPUT`, ele fica "solto" e pode ler qualquer coisa. 
+          Usando o `INPUT_PULLUP`, ativamos um resistor interno do Arduino que mantém o pino em <strong>HIGH (5V)</strong> quando o botão está solto.
+        </p>
+        <p>
+          Quando o pedestre aperta o botão, ele liga o pino no GND, e o Arduino lê <strong>LOW (0V)</strong>. 
+          É por isso que no código a gente verifica `if (digitalRead(BOTAO) == LOW)`.
+        </p>
+        
+        {/* Espaço para imagem */}
+        <div className="aula-imagem-container">
+          <img src={circuitImg4} alt="Esquema de ligação do semáforo com botão" className="aula-imagem" />
+          <span className="aula-imagem-legenda">Esquema: Botão ligado entre o Pino 10 e o GND (sem resistor externo, usando o Pull-Up).</span>
+        </div>
+      </section>
 
-          {/* Objetivos */}
-          <section className="aula-section objetivos">
-            <h2>🎯 Objetivos</h2>
-            <ul>
-              <li>Entender o conceito de entrada digital com <code>digitalRead()</code></li>
-              <li>Utilizar um botão como sensor de entrada</li>
-              <li>Controlar um LED a partir do estado do botão</li>
-              <li>Compreender o uso do <code>INPUT_PULLUP</code> no Arduino</li>
-            </ul>
-          </section>
-
-          {/* Materiais */}
-          <section className="aula-section materiais">
-            <h2>🧩 Materiais Necessários</h2>
-            <div className="materiais-grid">
-              <div className="material-item">
-                <span className="material-emoji">🔌</span>
-                <span>Arduino Uno</span>
-                <a href="https://meli.la/2RggVPo" className="material-link" target="_blank" rel="noopener noreferrer">Comprar</a>
-              </div>
-              <div className="material-item">
-                <span className="material-emoji">💡</span>
-                <span>LED (qualquer cor)</span>
-                <a href="https://meli.la/2kS9Ug9" className="material-link" target="_blank" rel="noopener noreferrer">Comprar</a>
-              </div>
-              <div className="material-item">
-                <span className="material-emoji">⚡</span>
-                <span>Resistor 220Ω (para o LED)</span>
-                <a href="https://meli.la/1gSceXs" className="material-link" target="_blank" rel="noopener noreferrer">Comprar</a>
-              </div>
-              <div className="material-item">
-                <span className="material-emoji">⚡</span>
-                <span>Resistor 10kΩ (para o botão)</span>
-                <a href="https://meli.la/1gSceXs" className="material-link" target="_blank" rel="noopener noreferrer">Comprar</a>
-              </div>
-              <div className="material-item">
-                <span className="material-emoji">🔘</span>
-                <span>Botão (push button)</span>
-                <a href="https://meli.la/2aqx3tp" className="material-link" target="_blank" rel="noopener noreferrer">Comprar</a>
-              </div>
-              <div className="material-item">
-                <span className="material-emoji">🧱</span>
-                <span>Protoboard</span>
-                <a href="https://meli.la/2XCst25" className="material-link" target="_blank" rel="noopener noreferrer">Comprar</a>
-              </div>
-              <div className="material-item">
-                <span className="material-emoji">🔗</span>
-                <span>Jumpers (macho-macho) 5x</span>
-                <a href="https://meli.la/1Z2uybk" className="material-link" target="_blank" rel="noopener noreferrer">Comprar</a>
-              </div>
-              <div className="material-item">
-                <span className="material-emoji">🔌</span>
-                <span>Cabo USB</span>
-                <a href="https://meli.la/1Quo84H" className="material-link" target="_blank" rel="noopener noreferrer">Comprar</a>
-              </div>
-            </div>
-          </section>
-
-          {/* Circuito */}
-          <section className="aula-section circuito">
-            <h2>📐 Esquema do Circuito</h2>
-            <div className="circuito-diagrama">
-              <pre className="ascii-diagram">
-{`
-  Arduino Uno          Protoboard
-  ┌─────────┐
-  │         │          ┌──────────────┐
-  │    13   ├──────────┤ o───[R]───o│  ← LED
-  │         │          │             │
-  │     2   ├──────────┤ o───────┐  │
-  │         │          │         │  │
-  │   GND   ├──────────┤ GND     │  │
-  │         │          │    └────o│  ← Resistor 10kΩ
-  └─────────┘          └──────────┘
-`}
-              </pre>
-            </div>
-            
-            <h3>📸 Foto do Circuito Montado</h3>
-            <div className="foto-circuito">
-              <div className="foto-placeholder">
-                <img 
-                  src={circuitoImg} 
-                  alt="Circuito montado - LED com botão no Arduino"
-                  className="foto-circuito-img"
-                />
-                <p style={{ marginTop: '1rem', color: '#666', fontSize: '0.9rem' }}>
-                  📸 Circuito montado na protoboard
-                </p>
-              </div>
-            </div>
-
-            <h3>🔌 Montagem Passo a Passo</h3>
-            <ol className="montagem-passos">
-              <li>
-                <strong>Monte o circuito do LED</strong>
-                <ul>
-                  <li>Ânodo (perna longa) → resistor 220Ω → pino <strong>13</strong></li>
-                  <li>Cátodo (perna curta) → GND</li>
-                </ul>
-              </li>
-              <li>
-                <strong>Monte o circuito do botão</strong>
-                <ul>
-                  <li>Uma perna do botão → pino <strong>2</strong></li>
-                  <li>Outra perna do botão → resistor 10kΩ → <strong>GND</strong></li>
-                  <li><strong style={{color: '#e94560'}}>⚠️ O resistor 10kΩ vai do botão até o GND</strong></li>
-                </ul>
-              </li>
-              <li>
-                <strong>Conecte os jumpers</strong>
-                <ul>
-                  <li>Jumper do pino <strong>13</strong> → resistor do LED</li>
-                  <li>Jumper do pino <strong>2</strong> → uma perna do botão</li>
-                  <li>Jumper do <strong>GND</strong> → resistor 10kΩ → outra perna do botão</li>
-                </ul>
-              </li>
-            </ol>
-          </section>
-
-          {/* Código */}
-          <section className="aula-section codigo">
-            <h2>💻 Código — LED com Botão</h2>
-            <div className="codigo-container">
-              <div className="codigo-header">
-                <span className="codigo-linguagem">Arduino C++</span>
-                <button className="btn-copiar" onClick={() => {
-                  navigator.clipboard.writeText(document.getElementById('codigo-botao').textContent);
-                  alert('Código copiado! 📋');
-                }}>
-                  📋 Copiar código
-                </button>
-              </div>
-              <pre className="codigo-pre" id="codigo-botao">
-{`// Código para acender um LED com um botão
-// LED no pino 13, botão no pino 2
-// Usando INPUT_PULLUP com resistor externo no GND
+      {/* Bloco de Código */}
+      <section className="aula-secao">
+        <h2>O Código</h2>
+        <p>Copie o código abaixo. Note como usamos o laço de repetição <code>while</code> para travar o semáforo no vermelho enquanto o pedestre atravessa:</p>
+        
+        
+          <pre className="aula-codigo">
+            <BlocoCodigo codigo={`// Pinos dos LEDs
+const int VERMELHO = 13;
+const int AMARELO = 12;
+const int VERDE = 11;
+// Pino do Botão
+const int BOTAO = 10;
 
 void setup() {
-  pinMode(13, OUTPUT);          // LED como saída
-  pinMode(2, INPUT_PULLUP);     // Botão como entrada com pull-up interno
+  pinMode(VERMELHO, OUTPUT);
+  pinMode(AMARELO, OUTPUT);
+  pinMode(VERDE, OUTPUT);
+  
+  // Usa o resistor interno do Arduino
+  pinMode(BOTAO, INPUT_PULLUP);
 }
 
 void loop() {
-  int estadoBotao = digitalRead(2);  // Lê o estado do botão
-  
-  if (estadoBotao == LOW) {          // Botão pressionado = LOW (com pull-up)
-    digitalWrite(13, HIGH);          // Acende o LED
-  } else {                           // Botão solto = HIGH
-    digitalWrite(13, LOW);           // Apaga o LED
+  // Começa com o sinal aberto (Verde)
+  digitalWrite(VERDE, HIGH);
+  digitalWrite(AMARELO, LOW);
+  digitalWrite(VERMELHO, LOW);
+
+  // Fica no verde até o botão ser apertado (LOW)
+  while(digitalRead(BOTAO) == HIGH) {
+    // O código "trava" aqui esperando o botão
+    delay(50); // Pequena pausa para não sobrecarregar o processador
   }
-}`}
-              </pre>
-            </div>
 
-            <h3>📝 Explicação do Código</h3>
-            <table className="explicacao-tabela">
-              <thead>
-                <tr>
-                  <th>Linha</th>
-                  <th>Explicação</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><code>pinMode(13, OUTPUT);</code></td>
-                  <td>Configura o pino 13 (LED) como saída</td>
-                </tr>
-                <tr>
-                  <td><code>pinMode(2, INPUT_PULLUP);</code></td>
-                  <td>Configura o pino 2 como entrada com resistor interno ativado</td>
-                </tr>
-                <tr>
-                  <td><code>digitalRead(2);</code></td>
-                  <td>Lê o estado do botão (LOW quando pressionado)</td>
-                </tr>
-                <tr>
-                  <td><code>if (estadoBotao == LOW)</code></td>
-                  <td>Verifica se o botão está pressionado (LOW)</td>
-                </tr>
-                <tr>
-                  <td><code>digitalWrite(13, HIGH);</code></td>
-                  <td>Acende o LED quando o botão é pressionado</td>
-                </tr>
-              </tbody>
-            </table>
-          </section>
-
-          {/* Desafio */}
-          <section className="aula-section desafio">
-            <h2>⚡ Desafio</h2>
-            <div className="desafio-box">
-              <p><strong>Inverta a lógica: o LED deve ficar aceso quando o botão <u>NÃO</u> estiver pressionado.</strong></p>
-              <details className="desafio-resposta">
-                <summary>💡 Ver solução</summary>
-                <pre className="codigo-pre">
-{`void loop() {
-  int estadoBotao = digitalRead(2);
+  // Se chegou aqui, o botão foi apertado!
   
-  if (estadoBotao == LOW) {          // Botão pressionado
-    digitalWrite(13, LOW);           // Apaga o LED
-  } else {                           // Botão solto
-    digitalWrite(13, HIGH);          // Acende o LED
-  }
-}`}
-                </pre>
-              </details>
-            </div>
-          </section>
+  // Fecha a passagem (Amarelo)
+  digitalWrite(VERDE, LOW);
+  digitalWrite(AMARELO, HIGH);
+  delay(2000); // 2 segundos de amarelo
 
-          {/* Perguntas */}
-          <section className="aula-section perguntas">
-            <h2>❓ Perguntas para Reflexão</h2>
-            <ul className="perguntas-lista">
-              <li>O que acontece se você não usar o resistor de 10kΩ?</li>
-              <li>Por que o <code>INPUT_PULLUP</code> faz o botão ler <code>LOW</code> quando pressionado?</li>
-              <li>Qual a diferença entre <code>INPUT</code> e <code>INPUT_PULLUP</code>?</li>
-            </ul>
-          </section>
+  // Abre a passagem de pedestre (Vermelho)
+  digitalWrite(AMARELO, LOW);
+  digitalWrite(VERMELHO, HIGH);
+  delay(5000); // 5 segundos para o pedestre atravessar
+  
+  // O loop() recomeça, apagando o vermelho e acendendo o verde de novo!
+`}
+            />
+          </pre>
+        
+      </section>
 
-          {/* Checklist */}
-          <section className="aula-section checklist">
-            <h2>✅ Checklist do Aluno</h2>
-            <div className="checklist-items">
-              <label className="checklist-item">
-                <input type="checkbox" /> Montei o circuito na protoboard
-              </label>
-              <label className="checklist-item">
-                <input type="checkbox" /> Conectei o LED com resistor de 220Ω
-              </label>
-              <label className="checklist-item">
-                <input type="checkbox" /> Conectei o botão com resistor de 10kΩ no GND
-              </label>
-              <label className="checklist-item">
-                <input type="checkbox" /> Usei os pinos 13 (LED) e 2 (botão)
-              </label>
-              <label className="checklist-item">
-                <input type="checkbox" /> Carreguei o código no Arduino
-              </label>
-              <label className="checklist-item">
-                <input type="checkbox" /> O LED acende quando pressiono o botão! 🎉
-              </label>
-            </div>
-          </section>
+      {/* O Desafio! */}
+      <Desafio 
+        titulo="Buzzer para Cegos"
+        descricao="Pessoas com deficiência visual precisam de um aviso sonoro. Se você adicionar um buzzer no pino 9, como você faria para que ele emitisse um som contínuo (ou bipes) APENAS enquanto o sinal estiver vermelho para os carros?"
+        codigoSolucao={`// Adicione no topo:
+const int BUZZER = 9;
+// No setup():
+pinMode(BUZZER, OUTPUT);
 
-          {/* Erros Comuns */}
-          <section className="aula-section erros">
-            <h2>🧪 Erros Comuns e Soluções</h2>
-            <table className="erros-tabela">
-              <thead>
-                <tr>
-                  <th>Problema</th>
-                  <th>Solução</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>LED não acende</td>
-                  <td>Verifique a polaridade do LED (perna longa = positivo)</td>
-                </tr>
-                <tr>
-                  <td>LED não acende</td>
-                  <td>Confirme se o resistor de 220Ω está bem conectado</td>
-                </tr>
-                <tr>
-                  <td>Botão não funciona</td>
-                  <td>Verifique se o resistor de 10kΩ está conectado ao GND</td>
-                </tr>
-                <tr>
-                  <td>Botão não funciona</td>
-                  <td>Confirme se o pino 2 está com <code>INPUT_PULLUP</code></td>
-                </tr>
-                <tr>
-                  <td>LED acende sozinho</td>
-                  <td>Verifique se o resistor de 10kΩ está conectado corretamente</td>
-                </tr>
-              </tbody>
-            </table>
-          </section>
-        </div>
+// No bloco do vermelho, troque o delay(5000) por:
+digitalWrite(VERMELHO, HIGH);
+unsigned long inicio = millis();
+while(millis() - inicio < 5000) { // Fica 5 segundos nesse loop
+  tone(BUZZER, 1000); // Toca um bipe
+  delay(200);
+  noTone(BUZZER);     // Para o bipe
+  delay(300);         // Pausa
+}
+// Não esqueça de apagar o LED vermelho e desligar o buzzer depois!`}
+      />
 
-        <div className="aula-navegacao">
-          <a href="/intro/aula/3" className="btn-anterior">← Aula Anterior</a>
-          <a href="/intro/aula/5" className="btn-proximo">Próxima Aula →</a>
-        </div>
-      </main>
-
-      <Footer />
+      {/* Navegação entre Aulas */}
+      <footer className="aula-navegacao">
+        <Link to="/intro/aula/3" className="btn-voltar">← Aula Anterior</Link>
+        <Link to="/intro/aula/5" className="btn-proxima">Próxima Aula: Semáforo Inteligente →</Link>
+      </footer>
     </div>
   );
 }
-
-export default Aula4;

@@ -1,0 +1,59 @@
+.aula-codigo-container {
+  background-color: #0d1117 !important;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  overflow: hidden;
+  margin-top: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  width: 100%;
+}
+
+.aula-codigo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #161b22 !important;
+  padding: 8px 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+  font-family: monospace;
+  font-size: 0.85rem;
+  color: #8b949e !important;
+}
+
+.btn-copiar {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #c9d1d9;
+  border: none;
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  font-family: var(--fonte-corpo);
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-copiar:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.btn-copiar.copiado {
+  background-color: var(--cor-acao); /* Verde */
+  color: var(--cor-fundo);
+}
+
+.aula-codigo {
+  padding: 15px;
+  margin: 0;
+  overflow-x: auto; /* Permite rolar o código pro lado se for grande */
+  white-space: pre-wrap; /* Quebra linha no celular */
+  word-wrap: break-word;
+}
+
+.aula-codigo code {
+  font-family: 'Fira Code', 'Courier New', Courier, monospace;
+  font-size: 0.85rem; /* Fonte menor para caber melhor */
+  color: #c9d1d9 !important;
+  line-height: 1.5;
+}

@@ -10,13 +10,14 @@ import Aula6 from './pages/intro/Aula6';
 import Aula7 from './pages/intro/Aula7';
 import Aula8 from './pages/intro/Aula8';
 import Aula9 from './pages/intro/Aula9';
-import Aula10 from './pages/intro/Aula10';
 import EletronicaAula1 from './pages/eletronica-basica/Aula1';
 import EletronicaAula2 from './pages/eletronica-basica/Aula2';
 import EletronicaAula3 from './pages/eletronica-basica/Aula3';
 import EletronicaAula4 from './pages/eletronica-basica/Aula4';
 import EletronicaAula5 from './pages/eletronica-basica/Aula5';
 import EletronicaAula6 from './pages/eletronica-basica/Aula6';
+import Sobre from './pages/Sobre';
+import Projetos from './pages/Projetos';
 import ProgramacaoIndex from './pages/programacao/ProgramacaoIndex';
 import Bluetooth from './pages/programacao/Bluetooth';
 import AcelerometroADXL from './pages/programacao/AcelerometroADXL';
@@ -38,7 +39,6 @@ function App() {
           <Route path="/intro/aula/7" element={<Aula7 />} />
           <Route path="/intro/aula/8" element={<Aula8 />} />
           <Route path="/intro/aula/9" element={<Aula9 />} />
-          <Route path="/intro/aula/10" element={<Aula10 />} />
           <Route path="/eletronica/1" element={<EletronicaAula1 />} />
           <Route path="/eletronica/2" element={<EletronicaAula2 />} />  
           <Route path="/eletronica/3" element={<EletronicaAula3 />} />
@@ -50,6 +50,8 @@ function App() {
 <Route path="/programacao/acelerometro" element={<AcelerometroADXL />} />
 <Route path="/programacao/rfid" element={<RFID />} />
 <Route path="/programacao/ir" element={<ControleIR />} />
+          <Route path="/sobre" element={<Sobre />} /> 
+          <Route path="/projetos" element={<Projetos />} />
         </Routes>
       </div>
     </Router>

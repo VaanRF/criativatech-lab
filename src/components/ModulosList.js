@@ -1,70 +1,58 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './styles/ModulosList.css';
 
 const modulos = [
-  { 
-    id: 1, 
-    titulo: 'Introdução à Robótica', 
-    descricao: 'Conceitos básicos e primeiras interações', 
-    emoji: '🤖', 
+  {
+    id: 1,
+    titulo: 'Introdução à Programação',
+    descricao: 'Conceitos básicos e primeiras interações com Arduino.',
+    emoji: '🤖',
     aulas: 10,
-    rota: '/intro/aula/1'  // Primeira aula do módulo
+    rota: '/intro/aula/1'
   },
-  { 
-    id: 2, 
-    titulo: 'Eletrônica Básica', 
-    descricao: 'Componentes e circuitos', 
-    emoji: '⚡', 
-    aulas: 6,
-    rota: '/eletronica/1'  // Primeira aula do módulo
+  // A eletrônica básica foi removida daqui
+  {
+    id: 3,
+    titulo: 'Programação com Arduino',
+    descricao: 'Repositório de códigos base para projetos reais.',
+    emoji: '💻',
+    aulas: 4,
+    rota: '/programacao'
   },
-{
-  id: 3,
-  titulo: 'Programação com Arduino',
-  descricao: 'Repositório de códigos base para projetos',
-  emoji: '💻',
-  aulas: 4,
-  rota: '/programacao'
-},
-  { 
-    id: 4, 
-    titulo: 'Sensores e Atuadores', 
-    descricao: 'Interação com o mundo', 
-    emoji: '📡', 
+  {
+    id: 4,
+    titulo: 'Sensores e Atuadores',
+    descricao: 'Interação com o mundo físico e automação.',
+    emoji: '📡',
     aulas: 7,
-    rota: '/sensores/1'  // Para o futuro
+    rota: '/sensores/1' // Futuro
   },
 ];
 
-function ModulosList() {
-  const navigate = useNavigate();
-
-  const handleAcessar = (rota) => {
-    navigate(rota);
-  };
-
+export default function ModulosList() {
   return (
-    <section className="modulos">
-      <h2 className="section-title">📚 Módulos Disponíveis</h2>
+    <section className="modulos-container">
+      <div className="modulos-header">
+        <h2 className="modulos-titulo">Nossos Módulos</h2>
+        <p className="modulos-subtitulo">
+          Trilhas de aprendizado para você dominar a tecnologia na prática.
+        </p>
+      </div>
+
       <div className="modulos-grid">
-        {modulos.map(modulo => (
-          <div key={modulo.id} className="modulo-card">
-            <div className="modulo-emoji">{modulo.emoji}</div>
-            <h3>{modulo.titulo}</h3>
-            <p>{modulo.descricao}</p>
-            <span className="modulo-aulas">{modulo.aulas} aulas</span>
-            <button 
-              className="btn-acessar"
-              onClick={() => handleAcessar(modulo.rota)}
-            >
-              Acessar →
-            </button>
-          </div>
+        {modulos.map((modulo) => (
+          <Link to={modulo.rota} key={modulo.id} className="modulo-card">
+            <span className="modulo-emoji">{modulo.emoji}</span>
+            <h3 className="modulo-card-titulo">{modulo.titulo}</h3>
+            <p className="modulo-card-descricao">{modulo.descricao}</p>
+            <div className="modulo-footer">
+              <span className="modulo-aulas">{modulo.aulas} aulas</span>
+              <span className="modulo-seta">→</span>
+            </div>
+          </Link>
         ))}
       </div>
     </section>
   );
 }
-
-export default ModulosList;

@@ -1,83 +1,117 @@
 .hero {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 4rem 4rem;
-  background: linear-gradient(135deg, #16213e 0%, #0f3460 100%);
-  color: white;
-  min-height: 60vh;
+  text-align: center;
+  min-height: 80vh; /* Ocupa quase a tela toda */
+  padding: 40px 20px;
+  background: linear-gradient(180deg, var(--cor-fundo-escuro) 0%, var(--cor-fundo) 100%);
 }
 
 .hero-content {
-  flex: 1;
-  max-width: 600px;
-}
-
-.hero-content h2 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  background: linear-gradient(90deg, #e94560, #f5a623);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.hero-content p {
-  font-size: 1.2rem;
-  line-height: 1.6;
-  margin-bottom: 2rem;
-  opacity: 0.9;
-}
-
-.hero-buttons {
+  max-width: 800px;
   display: flex;
-  gap: 1rem;
-}
-
-.btn-primary {
-  background: #e94560;
-  color: white;
-  border: none;
-  padding: 0.8rem 2rem;
-  border-radius: 30px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.btn-primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(233, 69, 96, 0.3);
-}
-
-.btn-secondary {
-  background: transparent;
-  color: white;
-  border: 2px solid #e94560;
-  padding: 0.8rem 2rem;
-  border-radius: 30px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.btn-secondary:hover {
-  background: #e94560;
-  transform: translateY(-3px);
-}
-
-.hero-image {
-  flex: 1;
-  display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
 }
 
-.hero-emoji {
-  font-size: 10rem;
-  animation: float 3s ease-in-out infinite;
+/* =========================================
+   A MÁGICA DO LOGO (ANIMAÇÃO E GLOW)
+   ========================================= */
+.hero-logo {
+  width: 100%;
+  max-width: 450px; /* Tamanho máximo da logo no PC */
+  height: auto;
+  margin-bottom: 20px;
+  
+  /* Efeito flutuante suave */
+  animation: flutuar 4s ease-in-out infinite;
+  
+  /* Sombra brilhante azul/ciano em volta da logo */
+  filter: drop-shadow(0px 0px 30px rgba(0, 180, 216, 0.4));
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
+/* A animação de subir e descer */
+@keyframes flutuar {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+/* =========================================
+   TEXTOS
+   ========================================= */
+.hero-titulo {
+  font-family: var(--fonte-titulo);
+  font-size: 2.5rem;
+  color: var(--cor-destaque); /* Ciano */
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.hero-subtitulo {
+  font-size: 1.1rem;
+  color: var(--cor-texto-secundario);
+  margin-bottom: 40px;
+  line-height: 1.6;
+  max-width: 600px;
+}
+
+/* =========================================
+   BOTÕES
+   ========================================= */
+.hero-botoes {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-primario, .btn-secundario {
+  padding: 15px 30px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  font-family: var(--fonte-corpo);
+}
+
+.btn-primario {
+  background-color: var(--cor-acao); /* Verde */
+  color: var(--cor-fundo); /* Texto escuro para dar contraste */
+  box-shadow: 0 4px 15px rgba(0, 217, 126, 0.3);
+}
+
+.btn-primario:hover {
+  background-color: #00b86b; /* Verde um pouco mais escuro */
+  transform: translateY(-3px);
+}
+
+.btn-secundario {
+  background-color: transparent;
+  color: var(--cor-destaque); /* Ciano */
+  border: 2px solid var(--cor-destaque);
+}
+
+.btn-secundario:hover {
+  background-color: rgba(0, 180, 216, 0.1);
+  transform: translateY(-3px);
+}
+
+/* =========================================
+   AJUSTES PARA CELULAR
+   ========================================= */
+@media (max-width: 768px) {
+  .hero-titulo {
+    font-size: 1.8rem;
+  }
+  
+  .hero-subtitulo {
+    font-size: 1rem;
+  }
+  
+  .hero-logo {
+    max-width: 300px; /* Logo menor no celular para não empurrar os botões */
+  }
 }

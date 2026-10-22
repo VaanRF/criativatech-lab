@@ -1,0 +1,74 @@
+.desafio-container {
+  background-color: rgba(0, 217, 126, 0.05); /* Fundo verde bem sutil */
+  border: 2px dashed rgba(0, 217, 126, 0.4); /* Borda tracejada */
+  border-radius: 12px;
+  padding: 25px;
+  margin: 40px 0;
+  transition: all 0.3s ease;
+}
+
+.desafio-container:hover {
+  background-color: rgba(0, 217, 126, 0.08);
+  border-color: var(--cor-acao);
+}
+
+.desafio-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.desafio-icone {
+  font-size: 1.8rem;
+}
+
+.desafio-header h3 {
+  font-family: var(--fonte-titulo);
+  color: var(--cor-acao) !important; /* Verde */
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+.desafio-descricao {
+  color: var(--cor-texto) !important;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.desafio-btn {
+  background-color: transparent;
+  color: var(--cor-acao);
+  border: 1px solid var(--cor-acao);
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.desafio-btn:hover {
+  background-color: var(--cor-acao);
+  color: var(--cor-fundo);
+}
+
+.desafio-btn.ativo {
+  background-color: rgba(0, 217, 126, 0.2);
+  border-color: transparent;
+}
+
+/* Animação da solução aparecendo */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.desafio-solucao {
+  animation: fadeInDown 0.3s ease forwards;
+  margin-top: 20px;
+}

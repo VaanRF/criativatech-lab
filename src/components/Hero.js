@@ -1,25 +1,37 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './styles/Hero.css';
 
-function Hero() {
+export default function Hero() {
   return (
     <section className="hero">
       <div className="hero-content">
-        <h2>🚀 Aprenda Robótica na Prática</h2>
-        <p>
-          Projetos, códigos e materiais para você explorar o mundo da robótica
-          no CJ Restinga.
+        
+        {/* A Logo Grande com Efeito */}
+        <img 
+          src="/logo.png" 
+          alt="Criativa Tech Lab" 
+          className="hero-logo" 
+        />
+
+        <h1 className="hero-titulo">
+          Laboratório de Criação com Tecnologia
+        </h1>
+        
+        <p className="hero-subtitulo">
+          Programação, eletrônica e projetos maker. Do zero ao código, construindo o futuro com as próprias mãos.
         </p>
-        <div className="hero-buttons">
-          <button className="btn-primary">Explorar Módulos</button>
-          <button className="btn-secondary">Ver Projetos</button>
+
+        <div className="hero-botoes">
+          <Link to="/projetos" className="btn-primario">
+            Ver Projetos
+          </Link>
+          <Link to="/intro/aula/1" className="btn-secundario">
+            Começar a Aprender
+          </Link>
         </div>
-      </div>
-      <div className="hero-image">
-        <span className="hero-emoji">⚡</span>
+
       </div>
     </section>
   );
 }
-
-export default Hero;
